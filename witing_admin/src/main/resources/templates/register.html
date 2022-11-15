@@ -1,0 +1,97 @@
+<script>
+$(document).ready(function(){
+	
+	$.ajax({
+		url:'[[@{/citychart}]]',
+		success:function(data){
+			alert(data);
+		}
+	})
+	
+	$('#idcheckbtn').click(function(){
+		if($('#id').val() == ''){
+			alert("아이디를 입력 후 아이디 확인을 진행해주세요.");
+			return;
+		}
+		$.ajax({
+			url:'[[@{/idcheck}]]',
+			data:{id:$('#id').val()},
+			success:function(result){
+				if(result==true){
+					alert("사용 가능한 아이디 입니다.");
+				}else{
+					alert("이미 사용중인 아이디 입니다. 다시 입력해주세요.");
+				}
+			}
+		})
+	});
+		
+	$('#registerbtn').click(function(){
+		//비밀번호, 비밀번호 확인 일치하지 않을 경우 확인 필요
+		if($('#pwd').val() != $('#pwd2').val()){
+			alert("비밀번호 확인이 일치하지 않습니다. 다시 입력해 주세요.");
+			return;
+		}
+		//아이디 중복될 경우 회원가입 불가
+		$.ajax({
+			url:'[[@{/idcheck}]]',
+			data:{id:$('#id').val()},
+			success:function(result){
+				alert("idcheck?"+$('#id').val());
+				if(result==false){
+					alert("아이디 확인을 진행해 주세요.");
+				}else{
+					$('#registerform').attr({
+						method:'post',
+						action:'[[@{/registerimpl}]]'
+					});
+					$('#registerform').submit(); 
+				}
+			}
+		});
+	});
+	
+	$("#pwdcheck").hide();
+	$("#pwdwrong").hide();
+	$('#pwd2').keyup(function(){
+		var pwd = $('#pwd').val();
+		var pwd2 = $('#pwd2').val();
+		if(pwd == pwd2){
+			$("#pwdcheck").show();
+			$("#pwdwrong").hide();
+		}else{
+			$("#pwdcheck").hide();
+			$("#pwdwrong").show();
+		}
+	});
+});
+
+
+</script>
+<div class="content-wrapper">
+  <div class="row justify-content-center" style="margin-top:10%;">
+    <div class="col-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">회원가입을 진행해주세요 :)</h4>
+          <form id="registerform" class="forms-sample">
+            <div class="form-group col-7" style="display:inline-block">
+              <label for="id">Name</label>
+              <input type="text" class="form-control" id="id" name="adminid">
+            </div>
+            <button id="idcheckbtn" type="button" class="btn" value="아이디 확인" style="margin-left:3%; width: 30%; display: inline-block; background-color: lightgray">아이디 확인</button>
+            <div class="form-group">
+              <label for="pwd">Password</label>
+              <input type="password" class="form-control" id="pwd" name="adminpwd">
+            </div>
+            <div class="form-group">
+              <label for="pwd2">Password</label><span id="pwdcheck" style="padding-left: 10%"><img th:src="@{/assets/images/check.png}" style="width: 20px; height: 20px"></span><span id="pwdwrong"  style="padding-left: 10%"><img th:src="@{/assets/images/wrong.png}" style="width: 20px; height: 20px"></span>
+              <input type="password" class="form-control" id="pwd2">
+            </div>
+          </form>
+            <button id="registerbtn" type="button" class="btn btn-primary mr-2">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

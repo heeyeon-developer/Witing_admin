@@ -380,27 +380,16 @@
 
 		if ($("#device-sales").length) {
 			var deviceSalesData = {
-				labels: ["Iphone", "Google", "Sumsung", "Huawei", "Xiaomi", "Oppo", "Vivo", "Lg"],
+				labels: ["서울", "경기", "인천", "대전/충청", "강원", "광주/전라", "대구/경상", "부산"],
 				datasets: [{
 						label: 'Demand',
 						data: [450, 500, 300, 350, 200, 320, 310, 700],
 						backgroundColor: [
 							'#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8',
-						],
+						]
+						,
 						borderColor: [
 							'#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8', '#a461d8',
-						],
-						borderWidth: 1,
-						fill: false
-					},
-					{
-						label: 'Supply',
-						data: [250, 100, 310, 75, 290, 100, 500, 260],
-						backgroundColor: [
-							'#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a',
-						],
-						borderColor: [
-							'#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a', '#fc5a5a',
 						],
 						borderWidth: 1,
 						fill: false
