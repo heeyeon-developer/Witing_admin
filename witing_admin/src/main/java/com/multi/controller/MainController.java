@@ -1,4 +1,4 @@
-package com.multi.maincontroller;
+package com.multi.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
