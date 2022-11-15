@@ -5,21 +5,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.CustMapper">
 	
 	<select id="select" parameterType="String" resultType="CustDTO">
-		SELECT * FROM cust WHERE custid=#{custid}
+		SELECT * FROM adm WHERE adminid=#{adminid}
 	</select>
 	<select id="selectall" resultType="CustDTO">
-		SELECT * FROM cust
+		SELECT * FROM adm
 	</select>
 	<insert id="insert" parameterType="CustDTO">
-		INSERT INTO cust VALUES (#{custid},#{custpwd},#{custname},#{birth},#{phone},#{email},#{addr},#{addrdetail},#{zipcode},NOW(),#{gender},#{point},#{country})
+		INSERT INTO adm VALUES (#{adminid},#{adminpwd})
 	</insert>
 	<update id="update" parameterType="CustDTO">
-		UPDATE cust SET custpwd=#{custpwd}, custname=#{custname}, phone=#{phone}, email=#{email}, 
-		addr=#{addr}, addrdetail=#{addrdetail}, zipcode=#{zipcode}, gender=#{gender}, point=#{point}, country=#{country} 
-		WHERE custid=#{custid}
+		UPDATE cust SET adminpwd=#{custpwd} 
+		WHERE adminid=#{adminid}
 	</update>
 	<delete id="delete" parameterType="String">
-		DELETE FROM cust WHERE custid=#{custid}
+		DELETE FROM adm WHERE adminid=#{adminid}
 	</delete>
 	
 </mapper>
