@@ -34,4 +34,22 @@ public class AjaxController {
 		return result;
 	}
 	
+	@RequestMapping("/idcheck")
+	public Object idcheck(String id) {
+		boolean result = true;
+		try {
+			List<CustDTO> list = cust_service.getall();
+			for(CustDTO cust : list) {
+				if(id.equals(cust.getCustid())) {
+					result = false;
+					break;
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 }
