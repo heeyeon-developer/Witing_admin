@@ -52,6 +52,6 @@ public class AjaxController {
 			e.printStackTrace();
 		}
 		return result;
-	}  
+	}    
 	
 }
