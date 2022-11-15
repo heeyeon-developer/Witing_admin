@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.mapper.CitychartMapper">
+
+	<select id="selectall" resultType="CitychartDTO">
+		SELECT c.cityid, COUNT(re.reservid) AS reservcnt
+		  FROM city c
+		 INNER JOIN hotel h ON h.cityid = c.cityid
+		 INNER JOIN room  r ON r.hotelid = h.hotelid
+		 INNER JOIN reservation re ON re.roomid = r.roomid
+	     GROUP BY c.cityid
+	     ORDER BY c.cityid
+		  
+	</select>
+	
+</mapper>

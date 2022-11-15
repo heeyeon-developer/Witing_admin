@@ -1,4 +1,4 @@
-package com.multi.cust;
+package com.multi.adm;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import com.multi.dto.CustDTO;
 import com.multi.service.CustService;
 
 @SpringBootTest
-class CustGetId {
+class AdmGetAll {
 
 	@Autowired
 	CustService service;
@@ -18,8 +18,9 @@ class CustGetId {
 	@Test
 	void contextLoads() {
 		try {
-			CustDTO cust = service.get("adm1");
-			System.out.println(cust);
+			List<CustDTO> list = service.getall();
+			for(CustDTO cust : list)
+				System.out.println(cust);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
