@@ -27,12 +27,11 @@
 <script>
 
    var stompClient = null;
-   var id = '[[${session.loginadmin.id}]]';
+   var id = '[[${session.loginadm.adminid}]]';
    // 서버소켓에 연결
    function connect() {
-      var socket = new SockJS('http://127.0.0.1/admintest/ws');
+      var socket = new SockJS('http://127.0.0.1:8080/admin/ws');
       stompClient = Stomp.over(socket);
-   
       stompClient.connect({}, function(frame) { 
          setConnected(true);
          console.log('Connected: ' + frame);
@@ -127,11 +126,13 @@
 
 
 <!-- Page Heading -->
+<div class="container justify-contecnt-center">
+<div class="col-md-8" >
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
    <h1 class="h3 mb-0 text-gray-800">Web Socket</h1>
 </div>
 
-<H1 th:text="${session.loginadmin.id}">ID</H1>
+<H1 th:text="${session.loginadm.adminid}">ID</H1>
 <H1 id="status">Status</H1>
 <button id="connect">Connect</button>
 <button id="disconnect">Disconnect</button>
@@ -151,3 +152,5 @@
 <input type="text" id="totext">
 <button id="sendto">Send</button>
 <div id="to"></div>
+</div>
+</div>

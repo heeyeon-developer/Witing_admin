@@ -15,12 +15,14 @@ import com.multi.service.CustService;
 @Controller
 public class LoginController {
 	
+	String dir = "loginregister/";
+	
 	@Autowired
 	AdmService adm_service;
 
 	@RequestMapping("/login")
 	public String login(Model model) {
-		model.addAttribute("center","login");
+		model.addAttribute("center",dir+"login");
 		return "index";
 	}
 	
@@ -48,7 +50,20 @@ public class LoginController {
 	
 	@RequestMapping("/register")
 	public String register(Model model) {
-		model.addAttribute("center","register");
+		model.addAttribute("center",dir+"register");
+		return "index";
+	}
+	
+	@RequestMapping("/registerimpl")
+	public String registerimpl(Model model, AdmDTO adm) {
+		try {
+			adm_service.register(adm);
+			model.addAttribute("name",adm.getAdminid());
+			model.addAttribute("center",dir+"registerok");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "index";
 	}
 }
