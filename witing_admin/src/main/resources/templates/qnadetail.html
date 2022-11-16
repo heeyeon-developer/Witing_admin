@@ -1,0 +1,87 @@
+<!-- partial -->
+
+  <div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title"> Q & A</h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Forms</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <table class="container">
+       		<thead>
+       			<tr class="row">
+       				<th colspan="2" style="width:600px; padding-left:15px">
+       					<h3 style="width: 100%; padding-bottom: 15px">
+       						<span>Q.</span>
+       						<strong th:text="${qnadetail.title}" style="width: 100%"></strong>
+       					</h3>
+       				</th>
+       				
+       			</tr>
+       			
+       			<tr>
+       				<th th:text="'작성자 : '+${qnadetail.custid}"></th>
+       				<th th:text="${#dates.format(qnadetail.rdate,'yyyy-MM-dd HH:mm')}" style="text-align : right; padding-right:20px"></th>
+       			</tr>
+       			<tr colspan="2">
+       				<th>&nbsp</th>
+       			</tr>
+       		</thead>
+       	
+       		<tbody style="background-color: #EAEAEA; height: 100px">
+       			<tr>
+       				<td id="td_text" colspan="2" th:text="${qnadetail.text}" ></td>
+       			</tr>
+       		</tbody>
+       	
+       	</table>
+          </div>
+        </div>
+      </div>
+      
+<!-- 답변란 -->
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <table class="container">
+       		<thead>
+       			<tr class="row">
+       				<th colspan="2" style="width:600px; padding-left:15px">
+       					<h3 style="width: 100%; padding-bottom: 15px">
+       						<span>A.</span>
+       						<strong ></strong>
+       					</h3>
+       				</th>
+       				
+       			</tr>
+       			
+       			<tr>
+       				<th></th>
+       				<th></th>
+       			</tr>
+       			<tr colspan="2">
+       				<th>&nbsp</th>
+       			</tr>
+       		</thead>
+       	
+       		<tbody style="background-color: #EAEAEA; height: 100px">
+       			<tr>
+       				<td></td>
+       			</tr>
+       		</tbody>
+       	
+       	</table>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  

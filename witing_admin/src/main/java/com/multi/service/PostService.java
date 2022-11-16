@@ -72,4 +72,7 @@ public class PostService implements MyService<Integer, PostDTO>{
 	public List<PostDTO> hotelreviewall(int hotelid) throws Exception {
 		return mapper.hotelreviewall(hotelid);
 	}
+	public List<PostDTO> questall() throws Exception{
+		return mapper.questall();
+	}
 }

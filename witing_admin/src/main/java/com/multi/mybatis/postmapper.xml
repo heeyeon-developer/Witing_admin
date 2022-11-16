@@ -67,5 +67,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT * FROM post WHERE kind='review' AND hotelid = #{hotelid}
 		ORDER BY rdate DESC
 	</select>
-	
+	<select id="questall" resultType="PostDTO">
+		SELECT * FROM post WHERE kind='quest'
+		ORDER BY rdate DESC;
+	</select>
 </mapper>
