@@ -1,4 +1,4 @@
-package com.multi.cust;
+package com.multi.adm;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import com.multi.dto.CustDTO;
 import com.multi.service.CustService;
 
 @SpringBootTest
-class CustGetAll {
+class AdmGetAll {
 
 	@Autowired
 	CustService service;

@@ -19,11 +19,15 @@
     <!-- Layout styles -->
     <link rel="stylesheet" th:href="@{/assets/css/style.css}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" th:href="@{/assets/images/FJlogo.png}" />
+    <link rel="shortcut icon" th:href="@{/assets/images/FJlogo_dark.png}" />
     
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
     <script th:src="@{/js/jquery/jquery-2.2.4.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
+    
+    <!-- Websocket -->
+    <script th:src="@{/webjars/sockjs-client/sockjs.min.js}"></script>
+	<script th:src="@{/webjars/stomp-websocket/stomp.min.js}"></script>
     
   </head>
   <body>
@@ -370,11 +374,11 @@
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
               	<div>
-                	<a th:if="${session.logincust == null}" th:href="@{/login}" class="nav-link"><i class="mdi mdi-login menu-icon"></i>
+                	<a th:if="${session.loginadm == null}" th:href="@{/login}" class="nav-link"><i class="mdi mdi-login menu-icon"></i>
                   	<span class="menu-title">Login</span></a>
                 </div>
               	<div>
-                	<a th:if="${session.logincust != null}" th:href="@{#}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
+                	<a th:if="${session.loginadm != null}" th:href="@{/logout}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
                   	<span class="menu-title">Logout</span></a>
                 </div>
               </div>

@@ -1,5 +1,7 @@
 package com.multi.cust;
 
+import java.sql.Date;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +18,8 @@ class UpdateCust {
 	@Test
 	void contextLoads() {
 		
-		CustDTO cust = new CustDTO("dbb", "ddd", "ddd", null, "01033333333", "dd@dddddd", "경기도", "1층", 12345, null, "woman", 12345, "Korea");
+		CustDTO cust = new CustDTO("abc","Ab1234!!", "배단비", Date.valueOf("1997-11-11"), "010-1111-1111", "abc123@witing.com", "제주도", "7층", 12345, null, "woman", 0, "Korea");
+
 		try {
 			service.modify(cust);
 		} catch (Exception e) {
