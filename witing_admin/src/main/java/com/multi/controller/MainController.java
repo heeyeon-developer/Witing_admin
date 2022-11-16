@@ -23,16 +23,16 @@ public class MainController {
 		return "index";
 	}
 	
-	@RequestMapping("/registerimpl")
-	public String registerimpl(Model model, AdmDTO adm) {
+	@RequestMapping("/sockettest")
+	public String sokettest(Model model) {
 		try {
-			service.register(adm);
-			model.addAttribute("name",adm.getAdminid());
-			model.addAttribute("center","registerok");
+			System.out.println("insocket");
+			model.addAttribute("center","websocket");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "index";
 	}
+		
 }
