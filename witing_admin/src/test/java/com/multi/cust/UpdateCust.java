@@ -1,6 +1,5 @@
 package com.multi.cust;
 
-
 import java.sql.Date;
 
 import org.junit.jupiter.api.Test;
@@ -20,6 +19,7 @@ class UpdateCust {
 	void contextLoads() {
 		
 		CustDTO cust = new CustDTO("abc","Ab1234!!", "배단비", Date.valueOf("1997-11-11"), "010-1111-1111", "abc123@witing.com", "제주도", "7층", 12345, null, "woman", 0, "Korea");
+
 		try {
 			service.modify(cust);
 		} catch (Exception e) {
