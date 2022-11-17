@@ -290,7 +290,7 @@
               </a>
             </li>
 <!-- QnA nav test -->
-            <li class="nav-item">
+            <li class="nav-item" th:if="${session.loginadm != null}">
               <a class="nav-link" th:href="@{/qna}">
                 <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
                 <span class="menu-title">Q&A</span>
