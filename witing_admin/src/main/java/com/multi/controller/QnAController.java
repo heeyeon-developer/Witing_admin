@@ -13,6 +13,8 @@ import com.multi.service.PostService;
 
 @Controller
 public class QnAController {
+	String dir = "qna/";
+	
 	@Autowired
 	CustService custservice;
 	@Autowired
@@ -23,8 +25,15 @@ public class QnAController {
 		List<PostDTO> list = null;
 		try {
 			list = postservice.questall();
+			for(int i=0; i<list.size(); i++) {
+				if(postservice.answercheck(list.get(i).getPostid()) != null) {
+					list.get(i).setAnswer("답변완료");
+				}else {
+					list.get(i).setAnswer("미완료");
+				}
+			}
 			model.addAttribute("list", list);
-			model.addAttribute("center", "qna");
+			model.addAttribute("center", dir+"qna");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,15 +43,33 @@ public class QnAController {
 	
 	@RequestMapping("/qnadetail")
 	public String qnadetail(Model model, int postid) {
+		int toppostid = postid;
 		PostDTO post = null;
+		PostDTO answer = null;
 		try {
-			post = postservice.get(postid);
+			post = postservice.qnadetail(postid);
+			System.out.println(post);
+			answer = postservice.selectanswer(toppostid);
 			model.addAttribute("qnadetail", post);
-			model.addAttribute("center", "qnadetail");
+			model.addAttribute("answer", answer);
+			model.addAttribute("center", dir+"qnadetail");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "index";
+	}
+	@RequestMapping("/answersendimpl")
+	public String answersnedimpl(Model model, PostDTO answer) {
+		System.out.println(answer);
+		System.out.println("hotelid : "+ answer.getHotelid());
+		System.out.println("toppostid : "+ answer.getPostid());
+		try {
+			postservice.answerinsert(answer);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:qna";
 	}
 }

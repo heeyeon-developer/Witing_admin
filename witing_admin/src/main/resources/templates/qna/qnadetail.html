@@ -1,0 +1,146 @@
+<script>
+$(document).ready(function(){
+	$('#send_btn').click(function(){
+		var c = confirm('등록하시겠습니까?');
+		if(c == true){
+			$('#answer_form').attr({
+				'method':'post',
+				'action':'[[@{/answersendimpl}]]'
+			});
+			$('#answer_form').submit();
+			alert('정상적으로 등록되었습니다.')
+		}
+	})
+	
+	
+});
+
+</script>
+
+
+
+
+<!-- partial -->
+
+  <div class="content-wrapper">
+    <div class="page-header" style="margin-left: 40px">
+      <h1 style="color: black"> Q&A</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Forms</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+        </ol>
+      </nav>
+    </div>
+    <div style="margin-left: 40px">
+    	<h3 th:text="'호텔명 : '+${qnadetail.hotelname}" style="color: black"></h3>
+    </div>
+    <div class="row">
+<!-- 질문 -->
+      <div class="col-md-8 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <table class="container">
+            	<colgroup>
+					<col style="width:50%">
+					<col style="width:50%">
+				</colgroup>
+	       		<thead>
+	       			<tr class="row">
+	       				<th colspan="2" style="width:600px; padding-left:15px">
+	       					<h3 style="width: 100%; padding-bottom: 15px">
+	       						<span style="color: black">Q.</span>
+	       						<strong th:text="${qnadetail.title}" style="width: 100%; color: black" ></strong>
+	       					</h3>
+	       				</th>
+	       				
+	       			</tr>
+	       			
+	       			<tr>
+	       				<th th:text="'작성자 : '+${qnadetail.custid}"></th>
+	       				<th th:text="${#dates.format(qnadetail.rdate,'yyyy-MM-dd HH:mm')}" style="text-align : right; padding-right:20px"></th>
+	       			</tr>
+	       			<tr colspan="2">
+	       				<th>&nbsp</th>
+	       			</tr>
+	       		</thead>
+       	
+	       		<tbody style="background-color: #EAEAEA; height: 100px">
+	       			<tr>
+	       				<td id="td_text" colspan="2" th:text="'&nbsp&nbsp&nbsp&nbsp'+${qnadetail.text}" style="color: black"></td>
+	       			</tr>
+	       		</tbody>
+       	
+       	</table>
+          </div>
+        </div>
+      </div>
+<!-- 질문 끝 -->   
+<!-- 답변 있을 경우 -->
+      <div class="col-md-8 grid-margin stretch-card" th:if="${answer != null}">
+        <div class="card">
+          <div class="card-body">
+            <table class="container">
+       		<thead>
+       			<tr class="row">
+       				<th colspan="2" style="width:600px; padding-left:15px">
+       					<h3 style="width: 100%; padding-bottom: 15px">
+       						<span style="color: black">A.</span>
+       						<strong th:text="${answer.title}" style="width: 100%; color: black"></strong>
+       					</h3>
+       				</th>
+       				
+       			</tr>
+       			
+       			<tr>
+       				<th th:text="'작성자 : '+${answer.adminid}"></th>
+       				<th th:text="${#dates.format(answer.rdate,'yyyy-MM-dd HH:mm')}" style="text-align : right; padding-right:20px"></th>
+       			</tr>
+       			<tr colspan="2">
+       				<th>&nbsp</th>
+       			</tr>
+       		</thead>
+       	
+       		<tbody style="background-color: #EAEAEA; height: 100px">
+       			<tr>
+       				<td id="td_text" colspan="2" th:text="'&nbsp&nbsp&nbsp&nbsp'+${answer.text}" style="color: black"></td>
+       			</tr>
+       		</tbody>
+       	
+       	</table>
+          </div>
+        </div>
+      </div>
+<!-- 답변 있을 경우 끝 -->
+<!-- 답변이 없는 경우 -->
+	   <div class="col-md-8 grid-margin stretch-card" th:if="${answer == null}" style="margin-bottom: 0">
+    		<div class="card">
+    			<div class="card-body">
+    			<span><strong style="font-size: 25px">A.</strong></span>
+		        <form id="answer_form" style="padding-top: 0">
+		          <div class="form-group">
+		            <input id="title" type="text" class="form-control" th:value="'RE : '+${qnadetail.title}" name="title" readonly="readonly">
+		          </div>
+		          <div class="form-group">
+		            <input id="adminid" type="text" class="form-control" th:value="${session.loginadm.adminid}" readonly="readonly" name="adminid">
+		          </div>
+		          <div class="form-group">
+		            <textarea id="text" cols="30" rows="7" class="form-control" placeholder="answer.." name="text" ></textarea>
+		          </div>
+		          <div class="form-group">
+		            <input type="hidden" id="hotelid" cols="30" rows="7" class="form-control" th:value="${qnadetail.hotelid}" name="hotelid">
+		          </div>
+		          <div class="form-group">
+		            <input type="hidden" id="toppostid" cols="30" rows="7" class="form-control" th:value="${qnadetail.postid}" name="toppostid">
+		          </div>
+		        </form>
+       			<a href="#"><button id="send_btn" class="btn btn-primary py-3 px-5" style="float: right">Register</button></a>
+      			</div>
+      		</div>
+	  </div>
+<!-- 답변이 없는 경우 끝 -->
+	  <div  class="col-md-8" >
+	  	<button type="button"  class="btn btn-primary py-3 px-5" style="float: right; margin-top: 10px;" th:onclick="|location.href='@{/qna}'|"> List</button>
+	  </div>
+    </div>
+  </div>

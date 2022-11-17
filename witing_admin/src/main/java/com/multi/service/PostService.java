@@ -38,18 +38,8 @@ public class PostService implements MyService<Integer, PostDTO>{
 	public List<PostDTO> getall() throws Exception {
 		return mapper.selectall();
 	}
-	public void qnainsert(PostDTO v) throws Exception {
-		mapper.qnainsert(v);
-	}
-	public void reviewinsert(PostDTO v) throws Exception {
-		mapper.reviewinsert(v);
-	}
-	public List<PostDTO> myqna(String custid) throws Exception {
-		return mapper.myqna(custid);
-	}
-	public List<PostDTO> qnalist5(int hotelid) throws Exception {
-		return mapper.qnalist5(hotelid);
-	}
+	
+	
 	public List<PostDTO> hotelqnaall(int hotelid) throws Exception {
 		return mapper.hotelqnaall(hotelid);
 	}
@@ -60,19 +50,21 @@ public class PostService implements MyService<Integer, PostDTO>{
 	public PostDTO answercheck(int toppostid) throws Exception {
 		return mapper.answercheck(toppostid);
 	}
-	public List<PostDTO> myreview(String custid) throws Exception{
-		return mapper.myreview(custid);
-	}
+	
 	public PostDTO reviewdetail(int postid) throws Exception {
 		return mapper.reviewdetail(postid);
 	}
-	public List<PostDTO> reviewlist5(int hotelid) throws Exception {
-		return mapper.reviewlist5(hotelid);
-	}
+	
 	public List<PostDTO> hotelreviewall(int hotelid) throws Exception {
 		return mapper.hotelreviewall(hotelid);
 	}
 	public List<PostDTO> questall() throws Exception{
 		return mapper.questall();
+	}
+	public void answerinsert(PostDTO v) throws Exception {
+		mapper.answerinsert(v);
+	}
+	public PostDTO qnadetail(int postid) throws Exception {
+		return mapper.qnadetail(postid);
 	}
 }
