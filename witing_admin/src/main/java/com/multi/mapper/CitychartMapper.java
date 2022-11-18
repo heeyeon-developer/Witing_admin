@@ -9,5 +9,4 @@ import com.multi.frame.MyMapper;
 @Mapper
 @Repository
 public interface CitychartMapper extends MyMapper<Integer,CitychartDTO>{
-
 }

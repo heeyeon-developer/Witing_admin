@@ -39,7 +39,7 @@ public class CitychartService implements MyService<Integer, CitychartDTO>{
 
 	@Override
 	public List<CitychartDTO> getall() throws Exception {
-		return mapper.selectall();
+		return mapper.selectall(); 
 	}
 
 }

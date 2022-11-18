@@ -13,5 +13,5 @@ import lombok.ToString;
 @ToString
 public class CitychartDTO {
 	private Integer cityid;
-	private Integer reservcnt;
+	private Integer reservcnt; 
 }

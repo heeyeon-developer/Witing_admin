@@ -38,6 +38,6 @@ public class CitychartController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return data;
+		return data; 
 	}
 }

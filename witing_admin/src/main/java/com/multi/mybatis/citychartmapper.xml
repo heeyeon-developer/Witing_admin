@@ -12,7 +12,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		 INNER JOIN reservation re ON re.roomid = r.roomid
 	     GROUP BY c.cityid
 	     ORDER BY c.cityid
-		  
 	</select>
 	
 </mapper>
