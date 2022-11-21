@@ -35,7 +35,6 @@
 	<script src="https://code.highcharts.com/modules/export-data.js"></script>
 	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-    
   </head>
   <body>
     <div class="container-scroller">
@@ -386,6 +385,10 @@
             </li>
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
+              	<div>
+                	<a th:if="${session.loginadm != null}" th:href="@{/mypage(adminid=${session.loginadm.adminid})}" class="nav-link"><i class="mdi mdi-account"></i>
+                  	<span class="menu-title">My Page</span></a>
+                </div>
               	<div>
                 	<a th:if="${session.loginadm == null}" th:href="@{/login}" class="nav-link"><i class="mdi mdi-login menu-icon"></i>
                   	<span class="menu-title">Login</span></a>

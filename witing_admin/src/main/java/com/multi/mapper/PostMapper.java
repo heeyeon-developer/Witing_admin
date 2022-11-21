@@ -19,4 +19,5 @@ public interface PostMapper extends MyMapper<Integer, PostDTO> {
 	public List<PostDTO> questall() throws Exception;
 	public void answerinsert(PostDTO post) throws Exception;
 	public PostDTO qnadetail(int postid) throws Exception;
+	public int qnacnt() throws Exception;
 }

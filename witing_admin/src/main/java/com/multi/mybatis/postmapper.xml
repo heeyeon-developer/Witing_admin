@@ -51,4 +51,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INNER JOIN hotel h ON p.hotelid = h.hotelid
 		WHERE postid = #{postid};
 	</select>
+	<select id="qnacnt" resultType="Integer">
+		SELECT count(*) FROM post WHERE kind='quest'
+	</select>
 </mapper>

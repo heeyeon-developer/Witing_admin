@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO adm VALUES (#{adminid},#{adminpwd})
 	</insert>
 	<update id="update" parameterType="AdmDTO">
-		UPDATE cust SET adminpwd=#{adminpwd} 
+		UPDATE adm SET adminpwd=#{adminpwd} 
 		WHERE adminid=#{adminid}
 	</update>
 	<delete id="delete" parameterType="String">

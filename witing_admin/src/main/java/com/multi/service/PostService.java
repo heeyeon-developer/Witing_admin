@@ -9,6 +9,9 @@ import com.multi.dto.PostDTO;
 import com.multi.frame.MyService;
 import com.multi.mapper.PostMapper;
 
+
+
+
 @Service
 public class PostService implements MyService<Integer, PostDTO>{
 	@Autowired
@@ -67,4 +70,9 @@ public class PostService implements MyService<Integer, PostDTO>{
 	public PostDTO qnadetail(int postid) throws Exception {
 		return mapper.qnadetail(postid);
 	}
+	public int qnacnt() throws Exception{
+		return mapper.qnacnt();
+	}
+	
+	
 }

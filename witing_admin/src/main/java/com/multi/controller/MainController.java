@@ -34,5 +34,34 @@ public class MainController {
 		}
 		return "index";
 	}
+	
+	@RequestMapping("/mypage")
+	public String mypage(Model model, String adminid) {
+		AdmDTO adm = null;
+		try {
+			adm = service.get(adminid);
+			System.out.println(adm);
+			
+			model.addAttribute("adm", adm);
+			System.out.println(adm.getAdminid());
+			model.addAttribute("center", "mypage");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "index";
+	}
+	
+	@RequestMapping("/admupdateimpl")
+	public String admupdateimpl(Model model, AdmDTO adm) {
+		System.out.println(adm);
+		try {
+			service.modify(adm);
 		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:mypage?adminid="+adm.getAdminid();
+	}
 }

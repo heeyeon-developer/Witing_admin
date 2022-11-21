@@ -1,0 +1,92 @@
+<script>
+$(document).ready(function(){
+	$('#pwdupdate_btn').click(function(){
+		if($('#adminpwd1').val() != $('#adminpwd2').val()){
+			var p = $('#adminpwd1').val();
+			var b = $('#adminpwd2').val();
+			alert("비밀번호 확인이 일치하지않습니다. 다시 확인해주세요.");
+			return;
+		};
+		var c = confirm('수정하시겠습니까?');
+		if(c == true){
+			$('#pwdupdate_form').attr({
+				'method':'post',
+				'action':'[[@{/admupdateimpl}]]'
+			});
+			$('#pwdupdate_form').submit();
+			alert("정상적으로 수정되었습니다 : )");
+		}
+		
+	});
+})
+
+
+</script>
+
+<!-- 비밀번호 업데이트 눌렀을 때 모달 -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-2sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>비밀번호를 입력해주세요</div>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+       <div class="modal-body">
+        <form id="pwdupdate_form" name="formname">
+          <div class="form-group">
+            <input id="adminid" type="text" class="form-control"  name="adminid" th:value="${adm.adminid}" hidden="hidden">
+          </div>
+          <div class="form-group">
+            <input id="adminpwd1" type="password" class="form-control" placeholder="Password" name="adminpwd">
+          </div>
+          <div class="form-group">
+            <input id="adminpwd2"type="password" class="form-control" placeholder="Confirm Password">
+          </div> 
+          </form>
+          <p></p>
+        </div>
+        <div class="modal-footer">
+		<!-- <a th:href="@{/custdetail(custid=${session.logincust.custid})}"> -->
+		<a href=#>
+          <button id="pwdupdate_btn" type="button" class="btn btn-primary mr-2" >Submit</button>
+        </a>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- 모달 끝 -->
+
+<div class="content-wrapper">
+  <div class="page-header">
+    <h3 class="page-title"> My Page </h3>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Forms</a></li>
+        <li class="breadcrumb-item active" aria-current="page">My Page</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">My Information</h4>
+          <form class="forms-sample">
+            <div class="form-group">
+              <label for="adminid">ID</label>
+              <input style="width: 70%" type="text" class="form-control" id="adminid" th:value="${adm.adminid}" readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label for="adminpwd">Password</label>
+              <input style="width: 70%" type="password" class="form-control" id="adminpwd" th:value="${adm.adminpwd}" readonly="readonly">
+            </div>
+            <div data-toggle="modal" data-target="#myModal" class="btn btn-primary mr-2" style="cursor:pointer">
+            	<h6 style=" line-height: 12px">비밀번호 수정</h6>
+         	</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
