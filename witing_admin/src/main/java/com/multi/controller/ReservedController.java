@@ -29,7 +29,6 @@ public class ReservedController {
 		System.out.println(check);
 		try {
 			List<ReservationDTO> list = service.reserved(check.getYear(), check.getMonth(), check.getRoomid());
-			System.out.println(list);
 			template.convertAndSend("/reservedresult", list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

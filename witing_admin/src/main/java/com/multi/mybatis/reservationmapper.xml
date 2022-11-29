@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 <mapper namespace="com.multi.mapper.ReservationMapper">
 	
 	<select id="reserved" parameterType="Integer" resultType="ReservationDTO">
-		SELECT sdate, edate
+		SELECT sdate, edate, roomid
   		  FROM reservation
  		 WHERE YEAR(sdate) = #{year}
  		   AND (MONTH(sdate) = #{month} || MONTH(edate) = #{month})
