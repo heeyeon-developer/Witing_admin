@@ -28,7 +28,7 @@ public class CustController {
 	
 	@RequestMapping("/registerimpl")
 	public String registerimpl(Model model, String custid, String custpwd, String custname, String birth, String phone, String email, String addr, String addrdetail, Integer zipcode, String gender, String country) throws Exception {
-		CustDTO cust = new CustDTO(custid, custpwd, custname, Date.valueOf(birth),phone,email,addr,addrdetail,zipcode,null,gender,1000,country);
+		CustDTO cust = new CustDTO(custid, custpwd, custname, Date.valueOf(birth),phone,email,addr,addrdetail,zipcode,null,gender,1000,country,null);
 		try {
 			service.register(cust);
 			model.addAttribute("name", cust.getCustname());

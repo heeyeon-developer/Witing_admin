@@ -140,6 +140,10 @@ $(document).ready(function(){
 								      <label for="country">COUNTRY:</label>
 								       <input type="text" class="form-control" id="country" th:value="${c.country}" name="country">
 									</div>
+									<div class="form-group">
+								      <label for="type">MBTI:</label>
+								      <input type="text" class="form-control" id="type" th:value="${c.type}" name="type" readonly="readonly">
+									</div>
 								</form>
 								<button id="update_btn" class="btn btn-info">UPDATE</button>
 								<button id="delete_btn" class="btn btn-info">DELETE</button>
