@@ -19,7 +19,6 @@ public class MsgController {
 	
 	@MessageMapping("/receiveall") // 모두에게 전송
 	public void receiveall(Msg msg, SimpMessageHeaderAccessor headerAccessor) {
-		System.out.println(msg);
 		template.convertAndSend("/send",msg);
 	}
 	@MessageMapping("/receiveme") // 나에게만 전송 ex)Chatbot

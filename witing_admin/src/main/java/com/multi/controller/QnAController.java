@@ -48,7 +48,6 @@ public class QnAController {
 		PostDTO answer = null;
 		try {
 			post = postservice.qnadetail(postid);
-			System.out.println(post);
 			answer = postservice.selectanswer(toppostid);
 			model.addAttribute("qnadetail", post);
 			model.addAttribute("answer", answer);
@@ -61,9 +60,6 @@ public class QnAController {
 	}
 	@RequestMapping("/answersendimpl")
 	public String answersnedimpl(Model model, PostDTO answer) {
-		System.out.println(answer);
-		System.out.println("hotelid : "+ answer.getHotelid());
-		System.out.println("toppostid : "+ answer.getPostid());
 		try {
 			postservice.answerinsert(answer);
 		} catch (Exception e) {

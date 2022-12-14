@@ -26,7 +26,6 @@ public class ReservedController {
 
 	@MessageMapping("/reservedcheck")
 	public void reservedcheck(ReservationDTO check, SimpMessageHeaderAccessor headerAccessor) {
-		System.out.println(check);
 		try {
 			List<ReservationDTO> list = service.reserved(check.getYear(), check.getMonth(), check.getRoomid());
 			template.convertAndSend("/reservedresult", list);

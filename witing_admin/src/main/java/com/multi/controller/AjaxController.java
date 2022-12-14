@@ -25,7 +25,6 @@ public class AjaxController {
 		boolean result = true;
 		try {
 			AdmDTO cust = adm_service.get(id);
-			System.out.println(id);
 			if(cust == null || !cust.getAdminpwd().equals(pwd)) {
 				result = false;
 			}

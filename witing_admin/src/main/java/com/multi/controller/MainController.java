@@ -26,7 +26,6 @@ public class MainController {
 	@RequestMapping("/sockettest")
 	public String sokettest(Model model) {
 		try {
-			System.out.println("insocket");
 			model.addAttribute("center","websocket");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -40,10 +39,8 @@ public class MainController {
 		AdmDTO adm = null;
 		try {
 			adm = service.get(adminid);
-			System.out.println(adm);
 			
 			model.addAttribute("adm", adm);
-			System.out.println(adm.getAdminid());
 			model.addAttribute("center", "mypage");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -54,7 +51,7 @@ public class MainController {
 	
 	@RequestMapping("/admupdateimpl")
 	public String admupdateimpl(Model model, AdmDTO adm) {
-		System.out.println(adm);
+
 		try {
 			service.modify(adm);
 		

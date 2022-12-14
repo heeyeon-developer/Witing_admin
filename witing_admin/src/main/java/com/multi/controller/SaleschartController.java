@@ -21,7 +21,6 @@ public class SaleschartController {
 		JSONObject result = new JSONObject();	// 최종 결과 데이터 담을 JSONObject
 		List<SaleschartDTO> list = null;
 		list = mapper.saleschart();
-		System.out.println(list);
 		
 		JSONArray totalprice_ja = new JSONArray();
 		JSONArray month_ja = new JSONArray();
@@ -39,7 +38,6 @@ public class SaleschartController {
 		// {"month":[1,2,3,4,5,6], "result":[]}
 		result.put("month", month_ja);
 		result.put("result", totalprice_ja);
-		System.out.println(result);
 		return result;
 	}
 }
